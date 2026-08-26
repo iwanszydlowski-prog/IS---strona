@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pianista Eventowy Premium</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #0A0E0C;
+      --color-text-primary: #E6E4DD;
+      --color-text-muted: rgba(230, 228, 221, 0.55);
+      
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      
+      --nav-height: 64px;
+      --container-max: 1600px;
+      --transition-smooth: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-nav: 0.4s ease;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      line-height: 1.5;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background-color: transparent;
+      z-index: 100;
+      transition: background-color var(--transition-nav);
+    }
+
+    .site-header.scrolled {
+      background-color: var(--color-bg);
+    }
+
+    .nav-container {
+      max-width: var(--container-max);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-name {
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .brand-name:hover {
+      opacity: 0.6;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--color-text-primary);
+    }
+
+    .hero-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-fixed::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 14, 12, 0.7) 0%,
+        rgba(10, 14, 12, 0.2) 80px,
+        transparent 180px
+      );
+      pointer-events: none;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    .hero-spacer {
+      height: 100vh;
+      position: relative;
+      z-index: 2;
+    }
+
+    .content-curtain {
+      position: relative;
+      z-index: 3;
+      background-color: var(--color-bg);
+      min-height: 100vh;
+      box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .section-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: clamp(6rem, 12vw, 10rem) clamp(1.5rem, 4vw, 4rem);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      max-width: 760px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container" aria-label="Główna nawigacja">
+      <a href="#" class="brand-name">Aleksander Malinowski</a>
+      
+      <ul class="nav-links">
+        <li><a href="#o-mnie" class="nav-link">O mnie</a></li>
+        <li><a href="#repertuar" class="nav-link">Repertuar</a></li>
+        <li><a href="#audio" class="nav-link">Audio</a></li>
+        <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero-fixed">
+    <img class="hero-img" src="images/hero.jpg" alt="Pianista eventowy">
+  </div>
+
+  <div class="hero-spacer"></div>
+
+  <main class="content-curtain">
+    <section class="section-inner" id="o-mnie">
+      <span class="hero-tag">Pianista Eventowy & Kameralny</span>
+      <h1 class="hero-title">Muzyka, która definiuje <em>przestrzeń</em> i nastrój wydarzenia.</h1>
+    </section>
+  </main>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > (window.innerHeight - 70)) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
